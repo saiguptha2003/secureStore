@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TokenTableContainer from "./TokenTableContainer"; // Import the container component.
 import "./App.css"
+import TokensTable from "./TokenTable";
 function App() {
   const [tokens, setTokens] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,11 +11,11 @@ function App() {
     const fetchTokens = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:5000/services/SecureStore/getAllSecureTokens",
+          "http://127.0.0.1:5001/services/SecureStore/getAllSecureTokens",
           {
             headers: {
               Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhbmR1cmFuZ2FzYWkiLCJleHAiOjE3MzUxOTg5NTIsInVzZXJfaWQiOiJkODI2YTg4ZGVjN2U0ZjkwYjAyZjg2YTI2ZTFiZTA3OCIsImVtYWlsIjoic2FpZ3VwdGhhX3ZAc3JtYXAuZWR1LmluIn0.59ESmR-TOY2sfz2jwN2E8ifqRB-rCI2vXQkhn9jReXo",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFldGVzaCIsImV4cCI6MTczNTIyNjE4NywidXNlcl9pZCI6IjMwODVmMzZiZGEyNDQ5ODBhMjQyNzFlOGUyNDg5YzI4IiwiZW1haWwiOiJjaGFldGVzaEBnbWFpbC5jb20ifQ.hnBmUi_wbZwK9SueP6WEjMdBiS0NE6f7nbI7R6Y9zPk",
             },
           }
         );
@@ -42,7 +43,7 @@ function App() {
 
   return (
     <div className="App">
-      <TokenTableContainer tokens={tokens} />
+      <TokensTable tokens={tokens} />
     </div>
   );
 }

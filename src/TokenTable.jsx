@@ -76,18 +76,18 @@ function TokensTable({ tokens }) {
         expire_date_time:"",
         nbytes:0,
     });
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+const handleInputChange = (e) => {
+  const { name, value, type } = e.target;
+  setFormData((prevData) => ({
+    ...prevData,
+    [name]: type === "number" ? parseInt(value, 10) || 0 : value,
+  }));
+};
 
     const handleSubmit = async () => {
-        const url = "http://localhost:5000/services/SecureStore/createSecureToken";
+        const url = "http://localhost:5001/services/SecureStore/createSecureToken";
         const token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBhbmR1cmFuZ2FzYWkiLCJleHAiOjE3MzUxOTg5NTIsInVzZXJfaWQiOiJkODI2YTg4ZGVjN2U0ZjkwYjAyZjg2YTI2ZTFiZTA3OCIsImVtYWlsIjoic2FpZ3VwdGhhX3ZAc3JtYXAuZWR1LmluIn0.59ESmR-TOY2sfz2jwN2E8ifqRB-rCI2vXQkhn9jReXo";
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFldGVzaCIsImV4cCI6MTczNTIyNjE4NywidXNlcl9pZCI6IjMwODVmMzZiZGEyNDQ5ODBhMjQyNzFlOGUyNDg5YzI4IiwiZW1haWwiOiJjaGFldGVzaEBnbWFpbC5jb20ifQ.hnBmUi_wbZwK9SueP6WEjMdBiS0NE6f7nbI7R6Y9zPk";
 
         try {
             console.log(formData.expire_date_time,"fsdfsdf")
